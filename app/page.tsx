@@ -4,16 +4,20 @@ export default function Home() {
   return (
     <>
       <div className="grid min-h-screen gap-10 bg-slate-400 px-20 py-20 lg:grid-cols-2 xl:grid-cols-3 xl:place-content-center">
-        <div className="flex  flex-col justify-between rounded-3xl bg-white p-6 shadow-xl">
-          <span className="text-2xl font-semibold">Select Item</span>
+        <div className="flex flex-col justify-between rounded-3xl bg-white p-6 shadow-xl dark:bg-black">
+          <span className="text-2xl font-semibold dark:text-white">
+            Select Item
+          </span>
           <ul>
             {[1, 2, 3, 4].map((i) => (
               <div
                 key={i}
                 className="my-2 flex justify-between first:bg-teal-50 last:bg-amber-50 odd:bg-blue-50 even:bg-yellow-50"
               >
-                <span className="text-gray-500">Grey Chair</span>
-                <span className="font-semibold">$19</span>
+                <span className="text-gray-500 dark:text-gray-100">
+                  Grey Chair
+                </span>
+                <span className="font-semibold dark:text-white">$19</span>
               </div>
             ))}
           </ul>
@@ -32,8 +36,7 @@ export default function Home() {
             className="mt- mx-auto
           block w-3/4 rounded-xl bg-blue-500
           p-3 text-center text-white 
-          hover:bg-teal-500 hover:text-black
-          focus:bg-red-500 active:bg-yellow-500
+          hover:bg-teal-500 hover:text-black focus:bg-red-500 active:bg-yellow-500 dark:border dark:border-white dark:bg-black dark:hover:bg-white
          "
           >
             Checkout
