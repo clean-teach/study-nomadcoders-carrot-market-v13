@@ -116,6 +116,28 @@ export default function Home() {
         </span>
         <input type="submit" value="Login" className="bg-white" />
       </form>
+      <div className="flex flex-col space-y-2  p-5 ">
+        <details className=" open:bg-orange-300">
+          <summary className=" cursor-pointer select-none">
+            what is my favorite
+          </summary>
+          <div className=" selection:bg-indigo-600 selection:text-white">
+            food
+          </div>
+        </details>
+        <ul className=" list-decimal marker:text-teal-500">
+          <li>hi</li>
+          <li>hi</li>
+          <li>hi</li>
+        </ul>
+        <input
+          type="file"
+          className="file:rounded-md file:border-0 file:bg-green-600 file:p-3"
+        />
+        <p className="first-letter:text-7xl first-letter:hover:text-purple-400">
+          Hello everyone!
+        </p>
+      </div>
     </>
   );
 }
