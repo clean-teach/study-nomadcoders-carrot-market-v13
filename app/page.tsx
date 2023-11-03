@@ -4,7 +4,7 @@ export default function Home() {
   return (
     <>
       <div className="grid min-h-screen gap-10 bg-slate-400 px-20 py-20">
-        <div className="rounded-3xl bg-white p-6 shadow-xl">
+        <div className="rounded-3xl bg-white p-6 shadow-xl sm:bg-red-400 sm:hover:bg-pink-800 md:bg-teal-400  lg:bg-indigo-400 xl:bg-yellow-400 2xl:bg-pink-500">
           <span className="text-2xl font-semibold">Select Item</span>
           <ul>
             {[1, 2, 3, 4].map((i) => (
