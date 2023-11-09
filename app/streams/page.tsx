@@ -2,11 +2,10 @@ import type { NextPage } from 'next';
 
 const Streams: NextPage = () => {
   return (
-    <div className="space-y-4 divide-y-2 py-10">
+    <div className="space-y-4 divide-y-[1px] py-10">
       {[...Array(6)].map((_, i) => (
         <div className="px-4  pt-4" key={i}>
           <div className="aspect-video w-full rounded-md bg-slate-300 shadow-sm" />
-          <h3 className="mt-2 text-lg text-gray-700">Let&apos;s try potatos</h3>
           <h1 className="mt-2 text-2xl font-bold text-gray-900">Galaxy S50</h1>
         </div>
       ))}
