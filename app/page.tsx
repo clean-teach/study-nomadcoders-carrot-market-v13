@@ -4,11 +4,11 @@ import Layout from './_components/layout';
 export default function Home() {
   return (
     <Layout title="홈" hasTabBar>
-      <div className="flex flex-col space-y-5 ">
+      <div className="flex flex-col space-y-5 divide-y">
         {[...Array(10)].map((_, i) => (
           <div
             key={i}
-            className="flex cursor-pointer justify-between border-b px-4 pb-4"
+            className="flex cursor-pointer justify-between px-4 pt-5"
           >
             <div className="flex space-x-4">
               <div className="x-20 w-20 rounded-md bg-gray-400" />
