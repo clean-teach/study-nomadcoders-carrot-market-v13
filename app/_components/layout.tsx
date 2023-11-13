@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { cls } from '../_lib/utils';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
 interface LayoutProps {
@@ -18,6 +18,7 @@ export default function Layout({
   children,
 }: LayoutProps) {
   const router = useRouter();
+  const pathName = usePathname();
 
   const onClick = () => {
     router.back();
@@ -25,14 +26,9 @@ export default function Layout({
 
   return (
     <div>
-      <div
-        className={cls(
-          !canGoBack ? 'justify-center' : '',
-          'fixed top-0 flex w-full max-w-xl items-center border-b bg-white px-4 py-3 text-lg  font-medium text-gray-800',
-        )}
-      >
+      <div className="fixed top-0 flex h-12 w-full max-w-xl items-center justify-center  border-b bg-white px-10 text-lg  font-medium text-gray-800">
         {canGoBack ? (
-          <button onClick={onClick}>
+          <button onClick={onClick} className="absolute left-4">
             <svg
               className="h-6 w-6"
               fill="none"
@@ -49,12 +45,22 @@ export default function Layout({
             </svg>
           </button>
         ) : null}
-        {title ? <span>{title}</span> : null}
+        {title ? (
+          <span className={cls(canGoBack ? 'mx-auto' : '', '')}>{title}</span>
+        ) : null}
       </div>
       <div className={cls('pt-16', hasTabBar ? 'pb-16' : '')}>{children}</div>
       {hasTabBar ? (
         <nav className="fixed bottom-0 flex w-full max-w-xl justify-between border-t bg-white px-10 pb-5 pt-3 text-xs text-gray-700">
-          <Link href="/" className="flex flex-col items-center space-y-2">
+          <Link
+            href="/"
+            className={cls(
+              'flex flex-col items-center space-y-2 ',
+              pathName === '/'
+                ? 'text-orange-500'
+                : 'transition-colors hover:text-gray-500',
+            )}
+          >
             <svg
               className="h-6 w-6"
               fill="none"
@@ -73,7 +79,12 @@ export default function Layout({
           </Link>
           <Link
             href="/community"
-            className="flex flex-col items-center space-y-2"
+            className={cls(
+              'flex flex-col items-center space-y-2 ',
+              pathName === '/community'
+                ? 'text-orange-500'
+                : 'transition-colors hover:text-gray-500',
+            )}
           >
             <svg
               className="h-6 w-6"
@@ -89,9 +100,17 @@ export default function Layout({
                 d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
               ></path>
             </svg>
-            <span>동내생활</span>
+            <span>동네생활</span>
           </Link>
-          <Link href="/chats" className="flex flex-col items-center space-y-2">
+          <Link
+            href="/chats"
+            className={cls(
+              'flex flex-col items-center space-y-2 ',
+              pathName === '/chats'
+                ? 'text-orange-500'
+                : 'transition-colors hover:text-gray-500',
+            )}
+          >
             <svg
               className="h-6 w-6"
               fill="none"
@@ -110,7 +129,12 @@ export default function Layout({
           </Link>
           <Link
             href="/streams"
-            className="flex flex-col items-center space-y-2"
+            className={cls(
+              'flex flex-col items-center space-y-2 ',
+              pathName === '/streams'
+                ? 'text-orange-500'
+                : 'transition-colors hover:text-gray-500',
+            )}
           >
             <svg
               className="h-6 w-6"
@@ -130,7 +154,12 @@ export default function Layout({
           </Link>
           <Link
             href="/profile"
-            className="flex flex-col items-center space-y-2"
+            className={cls(
+              'flex flex-col items-center space-y-2 ',
+              pathName === '/profile'
+                ? 'text-orange-500'
+                : 'transition-colors hover:text-gray-500',
+            )}
           >
             <svg
               className="h-6 w-6"

@@ -1,4 +1,5 @@
 import Layout from '@/app/_components/layout';
+import TextArea from '@/app/_components/textarea';
 import type { NextPage } from 'next';
 
 const CommunityPostDetail: NextPage = () => {
@@ -60,26 +61,24 @@ const CommunityPostDetail: NextPage = () => {
           </div>
         </div>
         <div className="my-5 space-y-5 px-4">
-          {[...Array(3)].map((_, i) => (
-            <div key={i} className="flex items-start space-x-3">
-              <div className="h-8 w-8 rounded-full bg-slate-200" />
-              <div>
-                <span className="block text-sm font-medium text-gray-700">
-                  Steve Jebs
-                </span>
-                <span className="block text-xs text-gray-500 ">2시간 전</span>
-                <p className="mt-2 text-gray-700">
-                  The best mandu restaurant is the one next to my house.
-                </p>
-              </div>
+          <div className="flex items-start space-x-3">
+            <div className="h-8 w-8 rounded-full bg-slate-200" />
+            <div>
+              <span className="block text-sm font-medium text-gray-700">
+                Steve Jebs
+              </span>
+              <span className="block text-xs text-gray-500 ">2시간 전</span>
+              <p className="mt-2 text-gray-700">
+                The best mandu restaurant is the one next to my house.
+              </p>
             </div>
-          ))}
+          </div>
         </div>
         <div className="px-4">
-          <textarea
-            className="mt-1 w-full rounded-md border-gray-300 shadow-sm focus:border-orange-500 focus:ring-orange-500 "
-            rows={4}
+          <TextArea
+            name="description"
             placeholder="Answer this question!"
+            required
           />
           <button className="mt-2 w-full rounded-md border border-transparent bg-orange-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2 ">
             Reply
