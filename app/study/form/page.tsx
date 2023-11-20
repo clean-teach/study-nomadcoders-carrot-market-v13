@@ -5,6 +5,7 @@ interface LoginForm {
   username: string;
   password: string;
   email: string;
+  errors?: string;
 }
 
 export default function Forms() {
@@ -12,18 +13,25 @@ export default function Forms() {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setError,
+    setValue,
+    reset,
+    resetField,
   } = useForm<LoginForm>({
     mode: "onChange",
   });
   const onValid = (data: LoginForm) => {
     console.log("im valid bby");
     console.log(data);
+    setError('email', {message: "이미 존재하는 이메일 입니다."});
   };
   const onInvalid = (errors: FieldErrors) => {
     console.log(errors);
   };
 
   console.log(errors);
+  console.log(watch());
 
   return (
     <form onSubmit={handleSubmit(onValid, onInvalid)}>
@@ -38,6 +46,7 @@ export default function Forms() {
         type="text"
         placeholder="Username"
       />
+      {errors.username?.message}
       <input {...register("email", {
           required: "Email is required",
           validate: {
@@ -52,6 +61,7 @@ export default function Forms() {
         placeholder="Password"
       />
       <input type="submit" value="Create Account" />
+      {errors.errors?.message}
     </form>
   );
 }
