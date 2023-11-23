@@ -13,6 +13,7 @@ interface EnterForm {
 export default function Enter() {
   const { register, handleSubmit, reset } = useForm<EnterForm>();
   const [method, setMethod] = useState<'email' | 'phone'>('email');
+  const [submitting, setSubmitting] = useState(false);
   const onEmailClick = () => {
     reset();
     setMethod("email");
@@ -22,7 +23,16 @@ export default function Enter() {
     setMethod("phone");
   };
   const onValid = (data: EnterForm) => {
-    console.log(data);
+    setSubmitting(true);
+    fetch("/api/users/enter", {
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then(() => {
+      setSubmitting(false);
+    });
   };
 
   return (
@@ -83,7 +93,7 @@ export default function Enter() {
           ) : null}
           {method === 'email' ? <Button text={'Get login link'} /> : null}
           {method === 'phone' ? (
-            <Button text={'Get one-time password'} />
+            <Button text={submitting ? "Loading" : "Get one-time password"} />
           ) : null}
         </form>
         <div className="mt-8">
