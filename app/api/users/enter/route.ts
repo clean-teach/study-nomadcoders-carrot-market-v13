@@ -1,11 +1,15 @@
-import { NextResponse } from "next/server";
+import { NextRequest } from 'next/server';
 
-export const POST = async (req: Request) => {
-    const res = await req.json();
-    
-    console.log(req);
-    console.log(req.body);
-    return NextResponse.json({ res });
+export const POST = async (req: NextRequest) => {
+  const res = await req.json();
+
+  if (req.method !== 'POST') {
+    return new Response('POST 요청이 아님', {
+      status: 401,
+    });
+  }
+  console.log(req);
+  return Response.json({ res });
 };
 
 // import { NextApiRequest, NextApiResponse } from "next";
@@ -17,6 +21,6 @@ export const POST = async (req: Request) => {
 //   if (req.method !== "POST") {
 //     res.status(401).end();
 //   }
-//   console.log(req.body.email);
+//   console.log(req.body);
 //   res.status(200).end();
 // }

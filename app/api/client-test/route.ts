@@ -1,4 +1,4 @@
-import client from "@/app/_lib/client";
+import client from "@/app/_lib/server/client";
 import { NextResponse, NextRequest } from "next/server";
 
 export async function GET() {
