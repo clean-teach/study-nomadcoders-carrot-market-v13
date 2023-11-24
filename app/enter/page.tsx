@@ -1,9 +1,10 @@
 'use client';
 import { useState } from 'react';
-import { cls } from '../_lib/utils';
+import { cls } from '../_lib/client/utils';
 import Input from '../_components/input';
 import Button from '../_components/button';
 import { useForm } from 'react-hook-form';
+import useMutation from '../_lib/client/useMutation';
 
 interface EnterForm {
   email?: string;
@@ -11,6 +12,7 @@ interface EnterForm {
 }
 
 export default function Enter() {
+  const [enter, {loading, data, error}] = useMutation('/api/users/enter');
   const { register, handleSubmit, reset } = useForm<EnterForm>();
   const [method, setMethod] = useState<'email' | 'phone'>('email');
   const [submitting, setSubmitting] = useState(false);
@@ -23,16 +25,7 @@ export default function Enter() {
     setMethod("phone");
   };
   const onValid = (data: EnterForm) => {
-    setSubmitting(true);
-    fetch("/api/users/enter", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(() => {
-      setSubmitting(false);
-    });
+    enter(data);
   };
 
   return (

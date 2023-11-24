@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { cls } from '../_lib/utils';
+import { cls } from '../_lib/client/utils';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 
